@@ -10,16 +10,10 @@ function mainFuc() {
   let result = document.querySelector(".resultado");
   console.log(historicCount);
   // console.log(operator);
-  if (+button || button == "0") result.value += button;
+  if (+button || button == "0" || button == ".") result.value += button;
   if (!+button) {
-    if (button == "C") result.value = "";
-    if (
-      button == "+" ||
-      button == "-" ||
-      button == "/" ||
-      button == "*" ||
-      button == "."
-    ) {
+    if (button == "C") result.value = 0;
+    if (button == "+" || button == "-" || button == "/" || button == "*") {
       if (operator === undefined) {
         result.value += button;
         operator = button;
@@ -30,6 +24,7 @@ function mainFuc() {
         operator = button;
       }
     }
+
     if (button == "=") {
       result.value = eval(result.value);
       historicCount.push(result.value);
